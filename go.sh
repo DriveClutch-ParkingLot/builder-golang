@@ -29,6 +29,7 @@ vendor() {
   go get
   cp -r "${1}/vendor" $2
   chmod -R a+rw ${2}/vendor
+  find ${2}/vendor -name ".git*" -exec rm -rf {} \;
 }
 
 build() {
