@@ -40,7 +40,7 @@ build() {
   fi
   GITHASH=${3-unknown}
   TAGVERSION=${4-latest}
-  CGO_ENABLED=0 go build -o $APPNAME -a -installsuffix cgo -ldflags "-s -X buildinfobuildtime=$(date '+%Y-%m-%d_%I:%M:%S%p') -X buildinfogithash=${GITHASH} -X buildinfoversion=${TAGVERSION-latest}"
+  CGO_ENABLED=0 go build -o $APPNAME -a -installsuffix cgo -ldflags "-s -X main.buildinfobuildtime=$(date '+%Y-%m-%d_%I:%M:%S%p') -X main.buildinfogithash=${GITHASH} -X main.buildinfoversion=${TAGVERSION-latest}"
   cp ${APPNAME} ${WD}
   chmod a+rwx ${WD}/${APPNAME}
 }
