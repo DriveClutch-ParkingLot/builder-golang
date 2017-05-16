@@ -25,13 +25,6 @@ cd ${P}
 
 export GOPATH="${P}/vendor:/go"
 
-vendor() {
-  go get
-  cp -r "${1}/vendor" $2
-  chmod -R a+rw ${2}/vendor
-  find ${2}/vendor -name ".git*" -exec rm -rf {} \;
-}
-
 build() {
   if [ "${DEF_SRCPATH}" == "${SRCPATH}" ]; then
     APPNAME="app"
@@ -54,9 +47,6 @@ builddetailed() {
 }
 
 case "${1}" in
-  vendor)
-    vendor ${P} ${WD}
-    ;;
   build)
     build ${WD} $@
     ;;
